@@ -1,0 +1,66 @@
+环境变量：PATH
+
+[root@svr7 ~]# echo $PATH
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin
+
+   作用：提供命令程序搜寻的路径
+[root@svr7 ~]# vim /opt/hello.sh
+#!/bin/bash
+echo hello
+[root@svr7 ~]# chmod +x /opt/hello.sh
+
+[root@svr7 ~]# /opt/hello.sh
+hello
+
+[root@svr7 ~]# hello.sh
+bash: hello.sh: 未找到命令...
+[root@svr7 ~]# echo $PATH
+
+[root@svr7 ~]# cp /opt/hello.sh /usr/bin/
+[root@svr7 ~]# hello.sh 
+
+查询命令对应程序文件
+[root@svr7 /]# which date
+/usr/bin/date
+[root@svr7 /]# ls /usr/bin/date 
+
+#####################################################
+文件目录默认的权限
+
+  权限的掩码  umask
+[root@svr7 /]# umask                  
+0022
+[root@svr7 /]# ls -ld /nsd01
+drwxr-xr-x. 2 root root 6 1月  23 09:04 /nsd01
+[root@svr7 /]# #777 - 022 =755   #目录最大权限减去权限掩码值
+[root@svr7 /]# umask 077         #修改权限掩码值
+[root@svr7 /]# umask
+
+[root@svr7 /]# mkdir /nsd02
+[root@svr7 /]# ls -ld /nsd02
+
+[root@svr7 /]# umask 770
+[root@svr7 /]# mkdir /nsd03
+[root@svr7 /]# ls -ld /nsd03
+
+[root@svr7 /]# umask 022
+#####################################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
